@@ -2,11 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { AUTH_CONFIG, Auth0Provider } from "./components/Auth";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<Auth0Provider
+			domain={AUTH_CONFIG.domain}
+			client_id={AUTH_CONFIG.clientId}
+			redirect_uri={AUTH_CONFIG.callbackUrl}
+		>
+			<App />
+		</Auth0Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
